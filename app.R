@@ -55,7 +55,7 @@ humanTime <- function() {
 
 # save the results to a file
 saveData <- function(data) {
-  fileName <- sprintf("s_%s.csv",
+  fileName <- sprintf("%s_%s.csv",
                       humanTime(),
                       digest::digest(data))
   
@@ -129,7 +129,7 @@ shinyApp(
                            labelMandatory("Is the dashboard load time 10 seconds or below?"),
                            c("Yes", "No", "No (w/ Justification)")),
                selectInput("naming_convention",
-                           labelMandatory("Are the propernaming conventions (e.g. title, tab names)?"),
+                           labelMandatory("Are there proper naming conventions (e.g. title, tab names)?"),
                            c("Yes", "No")),
                selectInput("db_glossary",
                            labelMandatory("Does the dashboard include a glossary for definitions?"),
@@ -204,7 +204,7 @@ shinyApp(
         shinyjs::hide("form")
         shinyjs::show("thankyou_msg")
       },
-      error - function(err) {
+      error = function(err) {
         shinjs::html("error_msg", err$message)
         shinyjs::show(id = "error", anim = TRUE, animType = "fade")
       },
